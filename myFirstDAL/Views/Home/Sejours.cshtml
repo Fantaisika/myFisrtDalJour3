@@ -1,0 +1,73 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Liste des Sejour</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('votre-image.jpg'); /* Remplacez 'votre-image.jpg' par le chemin de votre image */
+            background-size: cover; /* Ajuste la taille de l'image pour couvrir l'ensemble de la fenêtre du navigateur */
+            background-position: center; /* Centre l'image horizontalement */
+            background-repeat: no-repeat; /* Empêche la répétition de l'image de fond */
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9); /* Ajoute une couleur de fond semi-transparente au container */
+            padding: 20px; /* Ajoute un remplissage au container pour l'éloigner du bord */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ajoute une ombre à la boîte pour la distinguer de l'arrière-plan */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table border="1">
+            <tr>
+                <th>Id</th>
+                <th>Lieu</th>
+                <th>Téléphone</th>
+            </tr>
+            @foreach (myFirstDAL.Models.Sejour sejour in ViewData["sejours"] as List<myFirstDAL.Models.Sejour>)
+            {
+                <tr>
+                    <td>@sejour.Id</td>
+                    <td>@sejour.Lieu</td>
+                    <td>@sejour.Telephone</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>
+
