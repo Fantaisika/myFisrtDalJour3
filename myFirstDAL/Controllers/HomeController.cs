@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using myFirstDAL.Models;
+using myFirstDALNet.ViewModels;
+using System;
 
 namespace myFirstDAL.Controllers
 {
@@ -7,8 +9,19 @@ namespace myFirstDAL.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            
+
+            HomeViewModel indexViewModel = new HomeViewModel
+            {
+                Message = "Bonjour tout le monde",
+                Date = DateTime.Now,
+                Sejour = new Sejour { Lieu = "Chambord", Telephone = "11111111" }
+            };
+
+            return View(indexViewModel);
         }
+
+
 
         public IActionResult Ajout()
         {
@@ -19,6 +32,16 @@ namespace myFirstDAL.Controllers
             return View("Index");
         }
 
+      
+
+        public IActionResult Modifier()
+        {
+            using (IDal maDal = new Dal())
+            {
+                maDal.UpdateSejour(1, "Toulouse", "0667584921");
+            }
+            return View("Index");
+        }
         public IActionResult Sejours()
         {
             using (IDal maDal = new Dal())

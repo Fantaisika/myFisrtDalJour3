@@ -37,6 +37,21 @@ namespace myFirstDAL.Models
 
             Sejours.Add(new Sejour() { Lieu = "Toulouse", Telephone = "0102456789" });
 
+            this.Sejours.AddRange(
+       new Sejour
+       {
+           Id = 2,
+           Lieu = "Disney",
+           Telephone = "000000000"
+       },
+       new Sejour
+       {
+           Id = 3,
+           Lieu = "Chambord",
+           Telephone = "111111111"
+       }
+   );
+
             this.SaveChanges();
 
         }

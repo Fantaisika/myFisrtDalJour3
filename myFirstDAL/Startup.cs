@@ -36,12 +36,21 @@ namespace myFirstDAL
 
             }// dès qu'on fini d'utiliser la base de données ou dès qu'on appli de fermer l'accès a la bdd (save changes) il fait appel a context.dispose pour le nettoyage 
 
+            app.UseEndpoints(endpoints => //(exemple d'ajout d'une autre route)
+            {
+
+                endpoints.MapControllerRoute(
+                name: "example",
+                pattern: "Votes/{ajouterVotes}/{UpdateVotes}/{nomUtilisateur}/{idSejour}");  
+
+            });
+
             app.UseEndpoints(endpoints => //(3)
             {
 
                 endpoints.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=Index}/{id?}");  // la forme que allait avoir notre differente route , mettre en dernier le parttern par defaut
 
             });
         }

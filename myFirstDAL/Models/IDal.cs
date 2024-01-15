@@ -8,5 +8,9 @@ namespace myFirstDAL.Models
         void DeleteCreateDatabase();
         List<Sejour> ObtientTousLesSejours();
         int CreerSejour(string lieu, string telephone);
+        public Sejour GetSejourt(int Id);
+        public void UpdateSejour(int Id, string lieu, string telephone);
+
+        public void DeleteSejour(int id);
     }
 }

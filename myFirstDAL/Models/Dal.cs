@@ -6,6 +6,7 @@ namespace myFirstDAL.Models
     public class Dal : IDal
     {
         private BddContext _bddContext;
+
         public Dal()
         {
             _bddContext = new BddContext();
@@ -33,7 +34,40 @@ namespace myFirstDAL.Models
             _bddContext.Sejours.Add(sejour);
 
             _bddContext.SaveChanges();
+
             return sejour.Id;
+        }
+
+        public void UpdateSejour(int id, string newLieu, string newTelephone)
+        {
+            Sejour sejour = _bddContext.Sejours.Find(id);
+            if (sejour != null)
+            {
+                sejour.Lieu = newLieu;
+                sejour.Telephone = newTelephone;
+
+                _bddContext.SaveChanges();
+            }
+        }
+
+        public void DeleteSejour(int id)
+        {
+            Sejour sejour = _bddContext.Sejours.Find(id);
+            if (sejour != null)
+            {
+                _bddContext.Sejours.Remove(sejour);
+                _bddContext.SaveChanges();
+            }
+        }
+
+        public Sejour GetSejour(int id)
+        {
+            return _bddContext.Sejours.Find(id);
+        }
+
+        public Sejour GetSejourt(int Id)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
